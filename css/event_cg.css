@@ -1,0 +1,70 @@
+
+/* ============================================
+   EVENT CG LAYER
+   ============================================ */
+.event-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5; /* Above characters, below UI initially (but we will hide UI) */
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.event-layer.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 20; /* Above everything */
+}
+
+/* Image container for animation */
+.event-cg-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.event-cg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center;
+  opacity: 0;
+  animation: cg-appear 2s ease-out forwards, ken-burns 20s linear infinite alternate;
+}
+
+/* Animations */
+@keyframes cg-appear {
+  0% { opacity: 0; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+@keyframes flash-white {
+  0% { background: white; opacity: 1; }
+  100% { background: transparent; opacity: 0; }
+}
+
+.flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: white;
+  z-index: 25;
+  pointer-events: none;
+  animation: flash-out 1.5s ease-out forwards;
+}
+
+@keyframes flash-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

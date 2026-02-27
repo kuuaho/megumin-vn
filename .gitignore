@@ -1,0 +1,10 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Original Japanese-named folder (now migrated to images/characters/)
+めぐみん画像/
