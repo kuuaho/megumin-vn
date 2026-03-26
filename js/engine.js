@@ -73,6 +73,13 @@
         blush: 'images/characters/main4.png.png',
         proud: 'images/characters/main2.png.png' // Utilizing happy for proud as fallback
     };
+    const CHARACTER_SCALE = {
+        normal: 1.08,
+        happy: 0.82,
+        serious: 0.82,
+        blush: 0.82,
+        proud: 0.82
+    };
 
     function setCharacter(expression) {
         if (!expression) {
@@ -92,7 +99,8 @@
 
         if (imagePath) {
             // Use img tag for better control
-            dom.charSprite.innerHTML = `<img src="${imagePath}" class="char-img" alt="${expression}">`;
+            const scale = CHARACTER_SCALE[expression] ?? 1.08;
+            dom.charSprite.innerHTML = `<img src="${imagePath}" class="char-img" alt="${expression}" style="--char-scale: ${scale}">`;
             requestAnimationFrame(() => {
                 dom.charSprite.classList.add('visible');
             });
@@ -352,6 +360,8 @@
         dom.choiceContainer.classList.add('active');
         dom.clickArea.style.pointerEvents = 'none';
 
+        const maxAffection = Math.max(...scene.choices.map(c => c.affection));
+
         scene.choices.forEach((choice, idx) => {
             const btn = document.createElement('button');
             btn.className = 'choice-btn';
@@ -361,11 +371,39 @@
                 dom.choiceContainer.classList.remove('active');
                 dom.dialogueContainer.style.opacity = '1';
                 dom.clickArea.style.pointerEvents = '';
+
+                // Best answer: screen-filling hearts + blush!
+                if (choice.affection >= maxAffection && maxAffection > 0) {
+                    setCharacter('blush');
+                    playBigHeartsEffect();
+                }
+
                 state.sceneIndex++;
                 processScene();
             });
             dom.choiceContainer.appendChild(btn);
         });
+    }
+
+    function playBigHeartsEffect() {
+        dom.effectLayer.className = 'effect-layer effect-hearts';
+        const heartChars = ['♥', '♡', '💕', '💗', '💖'];
+        const count = 30;
+        for (let i = 0; i < count; i++) {
+            const heart = document.createElement('span');
+            heart.className = 'heart-particle heart-big';
+            heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.top = `${20 + Math.random() * 70}%`;
+            heart.style.animationDelay = `${Math.random() * 1.2}s`;
+            heart.style.fontSize = `${1.5 + Math.random() * 2.5}rem`;
+            heart.style.color = `hsl(${330 + Math.random() * 30}, ${70 + Math.random() * 30}%, ${50 + Math.random() * 25}%)`;
+            dom.effectLayer.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setTimeout(() => {
+            dom.effectLayer.className = 'effect-layer';
+        }, 4000);
     }
 
     // === Chapter Title Display ===
@@ -657,15 +695,61 @@
     function runSkip() {
         if (!state.skipMode) return;
         const scene = getCurrentScene();
+
+        // Stop skip at choices or end of chapter
         if (!scene || scene.type === 'choice') {
             state.skipMode = false;
             $('btn-skip').classList.remove('active');
             return;
         }
+
+        // If currently typing, finish instantly
         if (state.isTyping) finishTyping();
+
+        // Clean up any active Event CG immediately
+        hideEventCG();
+        dom.uiLayer.style.opacity = '1';
+
+        // Clear any pending auto timers
+        clearTimeout(state.autoTimer);
+
         setTimeout(() => {
+            if (!state.skipMode) return;
+
             state.sceneIndex++;
-            processScene();
+            const nextScene = getCurrentScene();
+
+            // End of chapter
+            if (!nextScene) {
+                state.skipMode = false;
+                $('btn-skip').classList.remove('active');
+                advanceChapter();
+                return;
+            }
+
+            // Stop at choices
+            if (nextScene.type === 'choice') {
+                state.skipMode = false;
+                $('btn-skip').classList.remove('active');
+                processScene();
+                return;
+            }
+
+            // For Event CG scenes during skip: show content but skip the CG animation
+            if (nextScene.charImg) {
+                // Set background and character without the CG overlay
+                if (nextScene.bg) setBackground(nextScene.bg);
+                if (nextScene.char !== undefined) setCharacter(nextScene.char);
+                setSpeaker(nextScene.speaker);
+                dom.dialogueText.textContent = nextScene.text;
+                state.isTyping = false;
+                dom.clickIndicator.classList.add('visible');
+            } else {
+                // Normal scene processing
+                processScene();
+            }
+
+            // Continue skipping
             if (state.skipMode) setTimeout(runSkip, 150);
         }, 100);
     }

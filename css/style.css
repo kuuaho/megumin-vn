@@ -765,6 +765,35 @@ button {
   }
 }
 
+/* Big hearts for correct choice */
+.effect-hearts .heart-particle.heart-big {
+  animation: heart-float-big 3.5s ease-out forwards;
+  filter: drop-shadow(0 0 6px rgba(255, 80, 120, 0.6));
+  z-index: 100;
+}
+
+@keyframes heart-float-big {
+  0% {
+    transform: translateY(0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.3);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translateY(-120px) scale(1) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(-300px) scale(0.4) rotate(30deg);
+    opacity: 0;
+  }
+}
+
 /* Character Layer */
 .char-layer {
   position: absolute;
@@ -778,9 +807,9 @@ button {
 
 .character-sprite {
   position: relative;
-  width: 340px;
-  height: 540px;
-  margin-bottom: 8%;
+  width: clamp(540px, 40vw, 620px);
+  height: clamp(810px, 60vw, 930px);
+  margin-bottom: 2%;
   transition: all 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -793,10 +822,15 @@ button {
 
 /* Image-based character */
 .char-img {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
   height: 100%;
+  margin: 0 auto;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: center bottom;
+  transform: scale(var(--char-scale, 1));
+  transform-origin: center bottom;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
   transition: opacity 0.3s ease;
 }
@@ -1195,8 +1229,8 @@ button {
   }
 
   .character-sprite {
-    width: 200px;
-    height: 340px;
+    width: min(76vw, 380px);
+    height: min(118vw, 590px);
   }
 
   .affection-display {

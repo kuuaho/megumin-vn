@@ -78,7 +78,7 @@ const CHAPTERS = [
             { bg: 'bg-grassland', char: null, speaker: null, text: '轟音と共に大地が裂け、光の奔流が遠くの岩山を飲み込んだ。爆風が頬を叩き、視界が白く染まる。', effect: 'shake' },
             { bg: 'bg-grassland', char: null, speaker: 'kuu', text: 'な、なんて威力だ……！' },
             { bg: 'bg-grassland', char: 'happy', speaker: null, text: 'だが、隣に立っていたはずのめぐみんが、もう地面にぺたりと座り込んでいる。' },
-            { bg: 'bg-grassland', char: 'proud', charImg: 'images/characters/2.png', speaker: 'めぐみん', text: '……我が奥義である爆裂魔法は、その絶大な威力ゆえ、消費魔力もまた絶大……要約すると、身動きひとつ取れません……' },
+            { bg: 'bg-grassland', char: 'proud', charImg: 'images/characters/2.jpg', speaker: 'めぐみん', text: '……我が奥義である爆裂魔法は、その絶大な威力ゆえ、消費魔力もまた絶大……要約すると、身動きひとつ取れません……' },
             { bg: 'bg-grassland', char: null, speaker: 'kuu', text: 'いや、それ致命的すぎないか！？' },
             { bg: 'bg-grassland', char: 'proud', speaker: 'めぐみん', text: '私は爆裂魔法をこよなく愛するアークウィザード。爆発系統の魔法が好きなのではない……爆裂魔法だけが好きなのです！' },
             {
@@ -145,7 +145,7 @@ const CHAPTERS = [
                     { text: '照れるなって', affection: 2 }
                 ]
             },
-            { bg: 'bg-river', char: 'happy', charImg: 'images/characters/3.png', speaker: null, text: 'それでも彼女の笑い声は、透明な水音のように心地よく響いた。' },
+            { bg: 'bg-river', char: 'happy', charImg: 'images/characters/3.jpg', speaker: null, text: 'それでも彼女の笑い声は、透明な水音のように心地よく響いた。' },
         ]
     },
 
@@ -210,7 +210,7 @@ const CHAPTERS = [
             { bg: 'bg-night-battle', char: 'serious', speaker: 'めぐみん', text: 'いや、ない！　あれほどの敵の大軍を前にして、爆裂魔法を放つ衝動が抑えられようか！' },
             { bg: 'bg-night-battle', char: null, speaker: 'kuu', text: '抑えろ！　理性を持て！' },
             { bg: 'bg-night-battle', char: 'blush', speaker: 'めぐみん', text: '……kuu。もし明日まで生き延びられれば、我が爆裂で奴らを消し飛ばしてみせましょう。だから——' },
-            { bg: 'bg-night-battle', char: 'serious', charImg: 'images/characters/5.png', speaker: 'めぐみん', text: '今日は、そなたが私を守る番です。' },
+            { bg: 'bg-night-battle', char: 'serious', charImg: 'images/characters/5.jpg', speaker: 'めぐみん', text: '今日は、そなたが私を守る番です。' },
             {
                 type: 'choice', text: 'めぐみんの言葉にどう応える？', choices: [
                     { text: '分かった。俺が守る。だから、お前は生き延びろ', affection: 5 },
@@ -225,6 +225,15 @@ const CHAPTERS = [
             { bg: 'bg-night-battle', char: 'normal', speaker: 'めぐみん', text: 'よいか諸君。ここは"安全結界"だ。大人の言うことを聞き、勇敢に待機せよ。' },
             { bg: 'bg-night-battle', char: null, speaker: null, text: '小さな手がぎゅっと繋がる。炊き出しのスープを受け取り、彼女は香草をひと摘み落とした。' },
             { bg: 'bg-night-battle', char: 'serious', speaker: 'めぐみん', text: '勝利の匂いを覚えさせる。次に嗅いだ時、もう恐怖と結びつかないように。' },
+            { bg: 'bg-night-battle', char: 'blush', speaker: 'めぐみん', text: '……kuu。怖いか？' },
+            {
+                type: 'choice', text: '戦いの前に——', choices: [
+                    { text: '怖くない。お前がいるからな', affection: 5 },
+                    { text: '正直、少し怖い。でもやるしかない', affection: 3 },
+                    { text: '怖いわけないだろ（強がる）', affection: 1 }
+                ]
+            },
+            { bg: 'bg-night-battle', char: 'happy', speaker: 'めぐみん', text: '……ふふ。そなたらしい答えです。' },
             { bg: 'bg-night-battle', char: null, speaker: null, text: '俺は頷き、足を踏み出した。魔王軍との戦いの幕が、いま上がろうとしていた。' },
         ]
     },
@@ -251,7 +260,7 @@ const CHAPTERS = [
                     { text: 'めぐみんの前に立ち、背中を守る', affection: 4 }
                 ]
             },
-            { bg: 'bg-night-battle', char: 'serious', charImg: 'images/characters/6.png', speaker: 'めぐみん', text: 'エクスプロージョン！！！', effect: 'explosion' },
+            { bg: 'bg-night-battle', char: 'serious', charImg: 'images/characters/6.jpg', speaker: 'めぐみん', text: 'エクスプロージョン！！！', effect: 'explosion' },
             { bg: 'bg-night-battle', char: null, speaker: null, text: '轟音が全てを飲み込み、魔王軍の前線が一瞬で吹き飛ぶ。炎と衝撃波に包まれた魔物たちは、跡形もなく消え失せていた。', effect: 'shake' },
             { bg: 'bg-night-battle', char: 'happy', speaker: 'めぐみん', text: '……はぁ……はぁ……ナイス爆裂……' },
             { bg: 'bg-night-battle', char: null, speaker: null, text: '膝をついためぐみんを、俺は慌てて抱きとめる。' },
@@ -262,6 +271,14 @@ const CHAPTERS = [
             { bg: 'bg-kitchen', char: 'happy', speaker: 'めぐみん', text: '……香りが、やさしい。' },
             { bg: 'bg-kitchen', char: null, speaker: 'kuu', text: '明日は腕、上がらないぞ。剣の素振りはやめとけ。' },
             { bg: 'bg-kitchen', char: 'happy', speaker: 'めぐみん', text: 'そなたも、爆裂の見学を休め。首が疲れる。' },
+            { bg: 'bg-kitchen', char: 'blush', speaker: 'めぐみん', text: '……kuu。今日は、ありがとう。私を信じてくれて。' },
+            {
+                type: 'choice', text: 'めぐみんにどう答える？', choices: [
+                    { text: 'お前の爆裂を信じてるから、当然だ', affection: 5 },
+                    { text: 'まあ、運が良かっただけだ', affection: 1 },
+                    { text: '二人で勝ったんだ。俺だけの手柄じゃない', affection: 3 }
+                ]
+            },
             { bg: 'bg-kitchen', char: null, speaker: null, text: '冗談を交わしつつ、血のついたマントを手洗いし、竈の火で乾かす。夜更け、外では犬が二度吠え、静けさが戻った。' },
             { bg: 'bg-kitchen', char: null, speaker: null, text: '確かに、戦場には勝利の余韻だけが残っていた。' },
         ]
@@ -301,6 +318,14 @@ const CHAPTERS = [
             { bg: 'bg-inn-room', char: 'proud', speaker: 'めぐみん', text: '裁縫は紅魔族のたしなみだ。マントは旗、旗は誇り。自ら繕う。' },
             { bg: 'bg-inn-room', char: 'happy', speaker: null, text: '昼、パンに卵を挟んだだけのサンドを二つ。めぐみんは「勝者の昼餉だ」と胸を張った。' },
             { bg: 'bg-inn-room', char: null, speaker: 'kuu', text: 'こういうのが、一番うまい。' },
+            { bg: 'bg-inn-room', char: 'blush', speaker: 'めぐみん', text: '……kuu。今の生活、幸せだと思いますか？' },
+            {
+                type: 'choice', text: 'めぐみんの問いに——', choices: [
+                    { text: 'めぐみんがいれば、それだけで幸せだ', affection: 5 },
+                    { text: 'まあ、悪くないんじゃないか', affection: 2 },
+                    { text: '爆裂魔法がなければもっと幸せかもな（冗談）', affection: 3 }
+                ]
+            },
             { bg: 'bg-inn-room', char: null, charImg: 'images/characters/7.png', speaker: null, text: '小さな影が二つ、物干しの下で寄り添っていた。それは戦い以上に大切な絆となったのだった。' },
         ]
     },
@@ -366,12 +391,21 @@ const CHAPTERS = [
             { bg: 'bg-kitchen', char: null, speaker: 'kuu', text: '焦げないように、ゆっくり混ぜて。' },
             { bg: 'bg-kitchen', char: 'normal', speaker: 'めぐみん', text: '任せよ。魔力循環の如く、対流を起こす……おっと、跳ねた。' },
             { bg: 'bg-kitchen', char: 'proud', speaker: 'めぐみん', text: '家事も戦術。二人の生活を守る"結界術"だ。' },
+            { bg: 'bg-kitchen', char: 'blush', speaker: 'めぐみん', text: '……kuu。もし私が爆裂魔法を使えなくなったら、そなたは……どうする？' },
+            {
+                type: 'choice', text: 'めぐみんの問いに——', choices: [
+                    { text: '俺が好きなのは爆裂魔法じゃなくて、めぐみん自身だ', affection: 5 },
+                    { text: '一緒に新しい魔法を探そう', affection: 3 },
+                    { text: 'そんなこと起きないから大丈夫だ', affection: 2 }
+                ]
+            },
+            { bg: 'bg-kitchen', char: 'blush', speaker: 'めぐみん', text: '……ばか。そういうことを言うから、余計に好きになるのだ。' },
             { bg: 'bg-sunset-lake', char: null, speaker: null, text: '食後、湖で指輪の箱を何度も出し入れして、俺は深呼吸を覚えた。' },
             { bg: 'bg-sunset-lake', char: 'happy', speaker: 'めぐみん', text: '緊張は悪い魔物じゃないよ。' },
             { bg: 'bg-sunset-lake', char: null, speaker: 'kuu', text: 'どうして？' },
             { bg: 'bg-sunset-lake', char: 'blush', speaker: 'めぐみん', text: '本気の証拠だから。' },
             // プロポーズ
-            { bg: 'bg-sunset-lake', char: null, speaker: null, text: '俺はポケットから取り出した小さな指輪を、震える手で差し出した。' },
+            { bg: 'bg-sunset-lake', char: null, charImg: 'images/characters/8.5.png', speaker: null, text: '俺はポケットから取り出した小さな指輪を、震える手で差し出した。' },
             {
                 type: 'choice', text: 'プロポーズの言葉は——', choices: [
                     { text: 'めぐみん。俺と結婚してくれ', affection: 5 },
@@ -420,6 +454,14 @@ const CHAPTERS = [
             { bg: 'bg-inn-room', char: null, speaker: 'kuu', text: '名前出すの恥ずかしいんだけど。' },
             { bg: 'bg-inn-room', char: 'happy', speaker: 'めぐみん', text: '明日は何する？　洗濯、買い出し、そして——記念に控えめな祝砲を一発。' },
             { bg: 'bg-inn-room', char: null, speaker: 'kuu', text: '最後のだけなし。' },
+            { bg: 'bg-inn-room', char: 'blush', speaker: 'めぐみん', text: '……kuu。最後にひとつだけ聞いてもいいですか。私と出会えて……よかったですか？' },
+            {
+                type: 'choice', text: '最後の問いに——', choices: [
+                    { text: '出会えて本当によかった。めぐみんは俺の人生で一番の宝物だ', affection: 5 },
+                    { text: '当たり前だろ、バカ', affection: 3 },
+                    { text: '……（言葉の代わりに抱きしめる）', affection: 4 }
+                ]
+            },
             { bg: 'bg-inn-room', char: 'happy', speaker: null, text: '笑い声が、まだ何も染みついていない部屋に、最初の音として刻まれた。' },
             { bg: 'bg-inn-room', char: null, speaker: null, text: 'この先どんな困難が待っていようと、めぐみんとならきっと乗り越えられる——' },
             { bg: 'bg-sunset-lake', char: 'happy', speaker: null, text: 'こうして俺たちの新しい物語が始まったのだった。', effect: 'hearts' },
